@@ -28,7 +28,7 @@ public class VideoGuiaService {
 	public ResponseEntity<Object>crearVideo(@RequestBody VideoGuia video) {
 		ResponseEntity<Object> respuesta;
 		try {			
-			RespuestaPersonalizada res = new RespuestaPersonalizada("Se creó la película con exito", HttpStatus.OK);
+			RespuestaPersonalizada res = new RespuestaPersonalizada("Se creó el video con exito", HttpStatus.OK);
 			res.setObjetoRespuesta(videoGuiaDao.save(video));
 			res.setObjetoRespuesta(videoGuiaDao.findById(video.getId()));
 			respuesta = ResponseEntity.ok(HttpStatus.OK);

@@ -1,6 +1,5 @@
 package com.handicapTraining.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,6 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioDao usuarioDao;
 
-	
-
 	public ResponseEntity<Object> crearUsuario(@RequestBody Usuario usuario) {
 		
 		ResponseEntity<Object> respuesta;
@@ -33,17 +30,14 @@ public class UsuarioService {
 			if (usuarioDao.findByCorreo(usuario.getCorreo()) != null) {
 				respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
 				respuesta = new ResponseEntity<>("El usuario ya existe", HttpStatus.BAD_REQUEST);
-				
 
 			} else if (ValidarCorreo.validarCorreoUsuario(usuario.getCorreo()) == false) {
 				respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
 				respuesta = new ResponseEntity<>("El correo no es válido, por favor intenta de nuevo",
 						HttpStatus.BAD_REQUEST);
-			
 
 			} else if (ValidarContraseña.comprobarPassword(usuario.getPassword()) == false) {
-				RespuestaPersonalizada res = new RespuestaPersonalizada("La contraseña es incorrecta",
-						HttpStatus.BAD_REQUEST);
+				RespuestaPersonalizada res = new RespuestaPersonalizada("La contraseña es incorrecta", HttpStatus.BAD_REQUEST);
 				respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
 				respuesta = new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
 		
@@ -53,13 +47,11 @@ public class UsuarioService {
 				res.setObjetoRespuesta(usuarioDao.save(usuario));
 				respuesta = ResponseEntity.ok(HttpStatus.OK);
 				respuesta = new ResponseEntity<>(res, HttpStatus.OK);
-				
 			}
 		} catch (Exception e) {
 			logger.error(e);
 			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
-			respuesta = new ResponseEntity<>("Lo sentimos, tenemos un error para crear al usuario",
-					HttpStatus.BAD_REQUEST);
+			respuesta = new ResponseEntity<>("Lo sentimos, tenemos un error para crear al usuario", HttpStatus.BAD_REQUEST);
 		}
 
 		return respuesta;
@@ -80,11 +72,8 @@ public class UsuarioService {
 	}
 
 	public ResponseEntity<Object> loginUsuario(@RequestParam String correo, @RequestParam String password) {
-
 		ResponseEntity<Object> respuesta;
-
 		try {
-
 			RespuestaPersonalizada res = new RespuestaPersonalizada("Bienvenido al home", HttpStatus.OK);
 			res.setObjetoRespuesta(usuarioDao.loginUsuario(correo, password));
 			respuesta = ResponseEntity.ok(HttpStatus.OK);
@@ -126,9 +115,19 @@ public class UsuarioService {
 		return usuarioDao.findAll();
 	}
 
-	
-	
+	public void deleteUserById(Integer id) {
+		usuarioDao.deleteById(id);
+	}
 
+	public ResponseEntity<Object> updateUser(@RequestBody Usuario usuario) {
+		ResponseEntity<Object> response;
+		RespuestaPersonalizada res = new RespuestaPersonalizada("Creación de usuario fue un éxito",
+				HttpStatus.OK);
+		res.setObjetoRespuesta(usuarioDao.save(usuario));
+		response = ResponseEntity.ok(HttpStatus.OK);
+		return response = new ResponseEntity<>(res, HttpStatus.OK);
+
+	}
 
 	/*@Override
 	public UserDetails loadUserByUsername(String userCorreo) throws UsernameNotFoundException {
@@ -141,3 +140,4 @@ public class UsuarioService {
 	}*/
 
 }
+

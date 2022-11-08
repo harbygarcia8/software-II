@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,6 +17,9 @@ public interface UsuarioDao extends JpaRepository<Usuario, Integer>{
 	public List<Usuario> loginUsuario(@RequestParam String correo, @RequestParam String password);
 	
 	Usuario findByCorreo(String correo);
-	
+
+
 	Usuario findById (Long id);
+
+
 }

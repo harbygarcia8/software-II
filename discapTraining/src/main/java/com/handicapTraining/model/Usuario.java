@@ -1,17 +1,12 @@
 package com.handicapTraining.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -24,7 +19,7 @@ public class Usuario implements Serializable{
 	@Id
 	@Column(name="id") 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	@Column(name="correo")
 	private String correo;
 	@Column(name="password")
@@ -43,13 +38,12 @@ public class Usuario implements Serializable{
 
 	
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public String getCorreo() {
 		return correo;
 	}
