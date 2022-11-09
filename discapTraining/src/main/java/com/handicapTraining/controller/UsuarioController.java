@@ -26,18 +26,18 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@PostMapping("crear")
-	public ResponseEntity<Object> crearUsuario(@RequestBody Usuario usuario) {
+	@PostMapping("create")
+	public ResponseEntity<Object> createUser(@RequestBody Usuario usuario) {
 		return usuarioService.crearUsuario(usuario);
 	}
 	
 	@GetMapping("login")
-	public ResponseEntity<Object> loginUsuario(@RequestParam String correo, @RequestParam String password) {
+	public ResponseEntity<Object> userLogin(@RequestParam String correo, @RequestParam String password) {
 		return usuarioService.loginUsuario(correo, password);
 	}
 
-	@GetMapping("obtener")
-	public List<Usuario> obtenerUsuarios(){
+	@GetMapping("getInformation")
+	public List<Usuario> getUser(){
 		return usuarioService.obtenerTodoUsuario();
 	}
 
