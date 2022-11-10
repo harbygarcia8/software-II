@@ -1,0 +1,55 @@
+
+<div class="container">
+    <h1>{{titulo}}</h1>
+    
+    <section>
+        <button type="button" 
+                class="btn btn-success" 
+                [routerLink]="['/usuarios/crear']">
+            <i class="bi bi-person-lines-fill"> Nuevo Contacto</i>
+        </button>
+        <br>
+    </section>
+    <br>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipo de documento</th>
+                <th scope="col">Nombre completo</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Discapacidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <th scope="row">{{usuario.id}}</th>
+                <td style="text-align: center;"> {{usuario.tipo_documento}}</td>
+                <td> {{usuario.nombres}}</td>
+                <td> {{usuario.apellidos}}</td>
+                <td> {{usuario.documento}}</td>
+                
+                <td> {{usuario.correo}}</td>
+                <td> {{usuario.discapacidad}}</td>
+                <td>
+                    <!-- EDITAR USUARIO -->
+                    <button type="button" 
+                            class="btn btn-primary" 
+                            [routerLink]="['/usuarios/editar/', usuario.id]">
+                        <i class="bi bi-pen-fill"></i>
+                    </button>
+
+                    <!-- ELIMINAR USUARIO -->
+                    <button type="button" 
+                            class="btn btn-danger" 
+                            (click)="deleteUsuario(usuario)" 
+                            matTooltip="Info about the action">
+                        <i class="bi bi-person-dash-fill"></i>
+                    </button> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

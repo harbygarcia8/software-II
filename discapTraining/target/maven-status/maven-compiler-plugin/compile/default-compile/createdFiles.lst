@@ -1,0 +1,12 @@
+com\handicapTraining\controller\UsuarioController.class
+com\handicapTraining\model\VideoGuia.class
+com\handicapTraining\controller\VideoGuiaController.class
+com\handicapTraining\repository\UsuarioDao.class
+com\handicapTraining\utilitario\ValidarCorreo.class
+com\handicapTraining\repository\VideoGuiaDao.class
+com\handicapTraining\model\Usuario.class
+com\handicapTraining\service\VideoGuiaService.class
+com\handicapTraining\HandicapTrainingApplication.class
+com\handicapTraining\utilitario\ValidarContraseña.class
+com\handicapTraining\response\RespuestaPersonalizada.class
+com\handicapTraining\service\UsuarioService.class

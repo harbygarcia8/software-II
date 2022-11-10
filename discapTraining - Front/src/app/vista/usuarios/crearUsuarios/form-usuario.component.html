@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div class="card-body">
+    <h2 class="card-title">{{ titulo }}</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Nombre completo</label>
+        <input type="text" class="form-control" id="nombres" name="nombres" aria-describedby="nameHelp"
+          placeholder="Ingrese Nombre Completo" [(ngModel)]="usuario.nombres">
+      </div>
+      <div class="form-group">
+        <label for="number">Apellidos completos</label>
+        <input type="text" class="form-control" name="number" placeholder="Ingrese sus apellidos"
+          [(ngModel)]="usuario.apellidos">
+      </div>
+      <div class="form-group">
+        <label for="number">Correo</label>
+        <input type="text" class="form-control" name="correo" placeholder="Ingrese su correo"
+          [(ngModel)]="usuario.correo">
+      </div>
+      <div class="form-group">
+        <label for="number">password</label>
+        <input type="password" class="form-control" name="number" placeholder="Ingrese su contraseña"
+          [(ngModel)]="usuario.password">
+      </div>
+      <div class="form-group">
+        <label for="number">Documento</label>
+        <input type="number" class="form-control" name="documento" placeholder="Ingrese su Documento"
+          [(ngModel)]="usuario.documento">
+      </div>
+      <div class="form-group">
+        <label for="number">tipo de documento</label>
+        <input type="text" class="form-control" name="tipo_documento" placeholder="Ingrese su tipo de documento"
+          [(ngModel)]="usuario.tipo_documento">
+      </div>
+      <div class="form-group">
+        <label for="number">Discapacidad</label>
+        <input type="text" class="form-control" name="discapacidad" placeholder="Ingrese su discapacidad"
+          [(ngModel)]="usuario.discapacidad">
+      </div>
+    
+      
+      <button type="submit" class="btn btn-success" role="button" (click)="createUsuario();" *ngIf="!usuario.id else update">Registrar
+        Usuario</button>
+      <ng-template #update>
+        <button type="submit" class="btn btn-danger" role="button" (click)="updateUsuario();">Actualizar Usuario</button>
+      </ng-template>
+
+    </form>
+  </div>
+
+</div>
