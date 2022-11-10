@@ -119,14 +119,14 @@ public class UsuarioService {
 		usuarioDao.deleteById(id);
 	}
 
-	public ResponseEntity<Object> updateUser(@RequestBody Usuario usuario) {
-		ResponseEntity<Object> response;
-		RespuestaPersonalizada res = new RespuestaPersonalizada("Creación de usuario fue un éxito",
-				HttpStatus.OK);
-		res.setObjetoRespuesta(usuarioDao.save(usuario));
-		response = ResponseEntity.ok(HttpStatus.OK);
-		return response = new ResponseEntity<>(res, HttpStatus.OK);
-
+	public ResponseEntity<Object> updateUserById(Integer id) {
+		ResponseEntity<Object> respuesta = null;
+		if (usuarioDao.existsById(id)) {
+			Usuario usuario = new Usuario();
+			usuarioDao.save(usuario);
+			respuesta = ResponseEntity.ok(HttpStatus.OK);
+		}
+		return respuesta;
 	}
 
 	/*@Override

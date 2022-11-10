@@ -134,9 +134,7 @@ public class VideoGuiaService {
 			respuesta = ResponseEntity.ok(HttpStatus.BAD_REQUEST);
 			respuesta = new ResponseEntity<>("Disculpa tenemos un error tratando de consultar el video",
 					HttpStatus.BAD_REQUEST);
-
 		}
 		return respuesta;
 	}
-
 }

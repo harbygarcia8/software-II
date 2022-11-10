@@ -15,9 +15,7 @@ public interface UsuarioDao extends JpaRepository<Usuario, Integer>{
 
 	@Query(value = "select * from usuario where correo = ? and password = ?", nativeQuery = true)
 	public List<Usuario> loginUsuario(@RequestParam String correo, @RequestParam String password);
-	
 	Usuario findByCorreo(String correo);
-
 
 	Usuario findById (Long id);
 

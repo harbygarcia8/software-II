@@ -46,8 +46,8 @@ public class UsuarioController {
 		 usuarioService.deleteUserById(id);
 	}
 
-	@PutMapping("/update")
-	public void updateUser(@RequestBody Usuario usuario){
-
+	@PutMapping("/update/{id}")
+	public void updateUserById(@PathVariable("id") Integer id){
+	usuarioService.updateUserById(id);
 	}
 }

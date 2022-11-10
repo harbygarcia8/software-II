@@ -23,7 +23,7 @@ public class VideoGuiaController {
 	
 	@Autowired
 	private VideoGuiaService VideoGuiaService;
-	
+
 	@PostMapping("crear")
 	public ResponseEntity<Object> crearVideo(@RequestBody VideoGuia pelicula) {
 		return VideoGuiaService.crearVideo(pelicula);
